@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			.top{vertical-align:text-top}
+			.middle{vertical-align: middle;}
+			.bottom{vertical-align: text-bottom;}
+			
+			.one{vertical-align: top;}
+			.two{
+				vertical-align: middle;
+			}
+			.three{
+				vertical-align: bottom;
+			}
+			
+			.four{
+				vertical-align: 0;			
+			}
+			
+			.five{
+				text-align: initial;
+				direction:rtl;
+				 }
+			.six{
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>		
+		<div class="wrap">
+			<img style="vertical-align: middle;" src="img/00.png"/>
+		</div>
+		<p style="font-size: 30px;line-height: 30px;">
+			我来看看
+			<a style="font-size: 16px;vertical-align:-60%;" href="">我是要处理的内容</a>
+		</p>
+		<p>
+			这是一幅<img class="top" border="0" src="img/00.png" />vertical-align:text-top。
+		</p>
+		<p>
+			这是一幅<img class="middle" border="0" src="img/11.png" />vertical-align: middle;。
+		</p> 
+		<p>
+			这是一幅<img class="bottom" border="0" src="img/22.png" />vertical-align: text-bottom。
+		</p> 		
+		<p>
+			这是一幅<img class="one" border="0" src="img/00.png" />vertical-align: top;。
+		</p>
+		<p>
+			这是一幅<img class="two" border="0" src="img/11.png" />vertical-align: middle。
+		</p> 
+		<p>
+			这是一幅<img class="three" border="0" src="img/22.png" />vertical-align: bottom。
+		</p> 
+		
+		<p>
+			这是一幅<img class="four" border="0" src="img/22.png" />vertical-align: 0。
+		</p> 
+		<!--
+		<p class="five">1   2  3  4  5  6  7  8  </p>
+		<p class="six">1   2  3  4  5  6  7  8 </p>
+		<div style="direction:rtl;text-align: initial;">this is a test</div>
+		<div style="direction:rtl;unicode-bidi:bidi-override;text-align: initial;">
+		    this is a test
+		</div>	
+		<div style="direction:rtl;unicode-bidi:bidi-override;text-align: initial;">
+		    this <span style="unicode-bidi:embed;">is a</span> test
+		</div>
+		-->
+	</body>
+</html>

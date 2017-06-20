@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title></title>
+		<style type="text/css">
+			th,td{
+				width: 60px;
+				height: 30px;
+				text-align: center;
+			}
+			#table1,#table2{
+				float: left;
+			}
+			#export{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="app">
+		<table border="1px" id="table1">
+			<tr>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+		</table>
+		<table border="1px" id="table2">
+			<tr>
+				<th>12</th>
+				<th>22</th>
+				<th>32</th>
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+		</table>
+	</div>
+		<div id="export">
+			<a data-type="xls" href="javascript:;">导出excel</a>
+		</div>
+		<script src="js/tableExport.js"></script>
+		<script type="text/javascript">
+				var $exportLink = document.getElementById('export');
+				$exportLink.addEventListener('click', function(e) {
+				e.preventDefault();
+				if (e.target.nodeName === "A") {
+				    tableExport('table1', 'excel', e.target.getAttribute('data-type'));
+				}
+			}, false);
+		</script>
+	</body>
+</html>

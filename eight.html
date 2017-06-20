@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;list-style: none;}
+			li{
+				width: 300px;
+				height: 200px;
+				background: lightgreen;
+				margin: 0 auto 20px;
+			}
+		</style>
+	</head>
+	<body>
+        <ul id="list">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>	
+		<script type="text/javascript">
+//			var  url = window.location.href;//获取当前的路径
+//			console.log(url);
+			var ul = document.getElementById("list");
+           var ul_child = ul.getElementsByTagName('li');
+           for (var i = 0; i < ul_child.length; i++) {
+               ul_child[i].index = i;
+               ul_child[i].onclick = function(){
+                   alert(this.index);
+                  }
+              }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;list-style: none;}
+			#list>li{
+				width: 300px;
+				height: 200px;
+				background: lightgreen;
+				margin: 0 auto 20px;
+			}
+			.mask{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(0,100,100,.5);
+				display: none;
+			}
+			.content{
+				width: 60%;
+				margin: 80px auto 0;				
+				background: deepskyblue;	
+				overflow: hidden;
+			}
+			.close{
+				width: 40px;
+				height: 40px;
+				background: yellow;
+				float: right;
+				line-height: 40px;
+				text-align: center;
+			}
+			.ctnul{
+				clear: both;
+				max-height: 250px;
+				overflow: scroll;
+			}
+			.ctnul li{
+				width: 100%;
+				height: 50px;
+				border-bottom: 2px solid red;
+			}
+			.noscroll,
+			.noscroll body {
+			    overflow: hidden;
+			}
+			.noscroll body {
+			    position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		 <ul id="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>	
+        <div class="mask">
+        	<div class="content">
+        		<div class="close"> x </div>
+        		<ul class="ctnul">
+        			<li class="lis">11</li>
+        			<li class="lis">22</li>
+        			<li class="lis">33</li>
+        			<li class="lis">44</li>
+ 					<li class="lis">55</li>
+        			<li class="lis">66</li>
+        			<li class="lis">77</li>
+        			<li class="lis">88</li>  
+        			<li class="lis">99</li>
+        			<li class="lis">10</li>
+        		</ul>
+        	</div>
+        </div>
+        <script src="http://qidian.gtimg.com/yuewen/v1/js/zepto.min.js"></script>
+        <script type="text/javascript">
+        	var list=document.getElementsByTagName('li');
+        	var mask=document.getElementsByClassName('mask')[0];
+        	var close=document.getElementsByClassName('close')[0];
+        	var ctnul=document.getElementsByClassName('ctnul')[0];
+        	var html=document.getElementsByTagName('html')[0];
+        	var body=document.getElementsByTagName('body')[0];
+        	for( var i=0;i<list.length;i++){
+        		list[i].index=i;
+        		list[i].onclick=function(){
+        			//this.index;当前元素的索引值
+        			mask.style.display="block";
+      				html.className ="noscroll";
+        			$.smartScroll($('.mask'), '.ctnul');
+        		}
+        	}
+        	close.onclick=function(){
+        			mask.style.display="none";
+      				html.className ="";
+        		}
+			$.smartScroll = function(container, selectorScrollable) {
+	// 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
+	if (!selectorScrollable || container.data('isBindScroll')) {
+		return;
+	}
+	// 是否是搓浏览器
+	// 自己在这里添加判断和筛选
+	var isSBBrowser;
+	var data = {
+		posY: 0,
+		maxscroll: 0
+	};
+
+	// 事件处理
+	container.on({
+		touchstart: function (event) {
+			var events = event.touches[0] || event;
+			// 先求得是不是滚动元素或者滚动元素的子元素
+			var elTarget = $(event.target);
+			if (!elTarget.length) {
+				return;	
+			}			
+			var elScroll;		
+			// 获取标记的滚动元素，自身或子元素皆可
+			if (elTarget.is(selectorScrollable)) 
+			//elTarget滚动元素的子元素   selectorScrollable滚动元素
+			{ 
+				elScroll = elTarget;
+			} else if ((elScroll = elTarget.parents(selectorScrollable)).length == 0)
+			//elTarget.parents(selectorScrollable).length点击的位置是否在滚动元素区域内
+			{
+				elScroll = null;
+			}
+			if (!elScroll) {
+				return;
+			}
+			
+			// 当前滚动元素标记
+			data.elScroll = elScroll;//绑定滚动元素
+			// 垂直位置标记
+			data.posY = events.pageY;
+			data.scrollY = elScroll.scrollTop();
+			// 是否可以滚动
+//			console.log(elScroll[0].scrollHeight);//520
+//			console.log(elScroll[0].clientHeight);//250
+			data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
+			//console.log(data.maxscroll);//270
+		},
+		touchmove: function () {
+			//console.log(isSBBrowser);//undefined
+			// 如果不足于滚动，则禁止触发整个窗体元素的滚动
+			if (data.maxscroll <= 0 || isSBBrowser) {
+				// 禁止滚动
+				event.preventDefault();
+			}
+			// 滚动元素
+			var elScroll = data.elScroll;
+			// 当前的滚动高度
+			var scrollTop = elScroll.scrollTop();//滚动的高度
+			
+			// 现在移动的垂直位置，用来判断是往上移动还是往下
+			var events = event.touches[0] || event;
+			
+			// 移动距离
+			var distanceY = events.pageY - data.posY;//移动的距离
+			//console.log(isSBBrowser);//undefined
+			if (isSBBrowser) {
+				elScroll.scrollTop(data.scrollY - distanceY);
+				elScroll.trigger('scroll');
+				return;
+			}
+	
+			// 上下边缘检测
+			if (distanceY > 0 && scrollTop == 0) {
+				// 往上滑，并且到头
+				// 禁止滚动的默认行为
+				event.preventDefault();
+				return;
+			}
+	
+			// 下边缘检测
+			if (distanceY < 0 && (scrollTop + 1 >= data.maxscroll)) {
+				// 往下滑，并且到头
+				// 禁止滚动的默认行为
+				event.preventDefault();
+				return;
+			}
+		},
+		touchend: function () {
+			data.maxscroll = 0;
+		}	
+	});
+
+	// 防止多次重复绑定
+	container.data('isBindScroll', true);
+};
+        </script>
+	</body>
+</html>
