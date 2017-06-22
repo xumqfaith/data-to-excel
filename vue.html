@@ -6,78 +6,115 @@
 		<title></title>
 		<script src="js/vue.js"></script>
 		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			#app{
+				width: 200px;
+				margin: 0 auto;	
+				min-height: 300px;
+			}
 			li{
-				height: 50px;
-				line-height: 50px;
-				background: pink;
-				margin-bottom: 20px;
-				list-style: none;
-				width: 200px;
-			}
-			.wrap{
-				width: 200px;
-				height: 200px;
-				background: yellowgreen;			
-			}
-			#wrapul{
 				width: 100%;
-				height: 100%;
-				position: fixed;
-				top: 0;
-				left: 0;
-				background: rgba(100,100,100,.5);
-				overflow: auto;
+				height: 50px;
+				margin-bottom: 10px;
+				background: blanchedalmond;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="app">
-		<div class="wrap"  @click="fun">
-			<div id="wrapul" v-show="show">
 				<ul>
-					<li v-for="item in list">{{ item.name}}</li>
-				</ul>
-			</div>
+					<li v-for="item in list">{{ item.number}}</li>
+				</ul>		
 		</div>
-			
-		</div>
-		<script src="js/iscroll.js"></script>
 		<script type="text/javascript">
 			var vm=new Vue({
 				el:"#app",
 				data:{
-					show:false,
 					list:[
-						{name:"1"},
-						{name:"2"},
-						{name:"3"},
-						{name:"4"},
-						{name:"5"},
-						{name:"6"},
-						{name:"7"},
-						{name:"8"},
-						{name:"9"},
-						{name:"10"},
-						{name:"11"},
-						{name:"12"},
-						{name:"13"},
-						{name:"14"},
-						{name:"15"},
-						{name:"16"},
-						{name:"17"},
-						{name:"18"}
-					]
-				},
-				mounted:function(){
-	
+						{number:"1"},
+						{number:"2"},
+						{number:"3"},
+						{number:"4"},
+						{number:"5"},
+						{number:"6"},
+						{number:"7"},
+						{number:"8"},
+						{number:"9"},
+						{number:"10"},
+						{number:"11"},
+						{number:"12"},
+						{number:"13"},
+						{number:"14"},
+						{number:"15"},
+						{number:"16"},
+						{number:"17"},
+						{number:"18"},
+						{number:"19"},
+				      	{number:"20"},
+				      	{number:"21"},
+				      	{number:"22"},
+				      	{number:"23"},
+				      	{number:"24"},
+				      	{number:"25"},
+				      	{number:"26"},
+				      	{number:"27"},
+				      	{number:"28"},
+				      	{number:"29"},
+				      	{number:"30"},
+				      	{number:"31"},
+				      	{number:"32"},
+				      	{number:"33"},
+				      	{number:"34"},
+				      	{number:"35"},
+				      	{number:"36"},
+				      	{number:"37"},
+				      	{number:"38"},
+				      	{number:"39"},
+				      	{number:"40"},
+				      	{number:"41"},
+				      	{number:"42"},
+				      	{number:"43"},
+				      	{number:"44"},
+				      	{number:"45"},
+				      	{number:"46"},
+				      	{number:"47"},
+				      	{number:"48"},
+				      	{number:"49"},
+				      	{number:"50"},
+				      	{number:"51"},
+				      	{number:"52"},
+				      	{number:"53"},
+				      	{number:"54"},
+				      	{number:"55"},
+				      	{number:"56"},
+				      	{number:"57"},
+				      	{number:"58"},
+				      	{number:"59"},
+				      	{number:"60"},
+				      	{number:"61"},
+				      	{number:"62"},
+				      	{number:"63"},
+				      	{number:"64"},
+				      	{number:"65"},
+				      	{number:"66"},
+				      	{number:"67"},
+				      	{number:"68"},
+				      	{number:"69"},
+				      	{number:"70"},
+				      	{number:"71"},
+				      	{number:"72"},
+				      	{number:"73"},
+				      	{number:"74"},
+				      	{number:"75"},
+				      	{number:"76"},
+				      	{number:"77"},
+				      	{number:"78"},
+				      	{number:"79"},
+				      	{number:"80"}
+						]
 				},
 				methods:{
-					fun:function(){
-						this.show=true;
-						setTimeout(function(){
-						var myscroll  =	new IScroll("#wrapul");
-					},500)
-					}
+					
 				}
 			});
 		</script>

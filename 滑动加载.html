@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+			#content{
+				height:960px
+			}
+			.border{
+				border:1px solid tomato;
+				margin-top:20px;
+				width: 100%;
+				background: palegoldenrod;
+				color:#ac1;
+				height:700px;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		 <div id="content" style="height:960px">  
+	        <div id="follow">this is a scroll test;<br/>    页面下拉自动加载内容</div>  
+	        <div class="border">hello world test DIV</div>   
+    	</div>  
+    	<script src="js/jquery-3.2.0.js"></script>
+    	<script type="text/javascript">
+    		$(document).ready(function(){  
+	        var range = 50;             //距下边界长度/单位px  
+	        var elemt = 500;           //插入元素高度/单位px  
+	        var maxnum = 20;            //设置加载最多次数  
+	        var num = 1;  
+	        var totalheight = 0;   
+	        var main = $("#content");                     //主体元素  
+	        $(window).scroll(function(){  
+	            var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  
+	             /*
+	            console.log("滚动条到顶部的垂直高度: "+$(document).scrollTop());  //区块的滑动高度
+	            console.log("页面的文档高度 ："+$(document).height());  //区块的真实高度
+	            console.log('浏览器的高度：'+$(window).height());  //区块的可视高度
+	             */ 
+	            totalheight = parseFloat($(window).height()) + parseFloat(srollPos);  
+	            if(($(document).height()-range) <= totalheight  && num != maxnum) {  
+	                main.append("<div style='border:1px solid tomato;margin-top:20px;color:#ac"+(num%20)+(num%20)+";height:"+elemt+"' >hello world"+srollPos+"---"+num+"</div>");  
+	                num++;  
+	            }  
+	        });  
+	    });  
+    	</script>
+	</body>
+</html>

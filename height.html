@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+			.top{
+				width: 200px;
+				height: 1200px;
+				background: palegoldenrod;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			
+		</div>
+		<script type="text/javascript">
+		console.log(document.compatMode);
+				var ul=document.getElementsByClassName('top')[0];
+				console.log(window.innerHeight);//568
+				console.log(ul.clientHeight);//1200
+				console.log(ul.offsetHeight);//1200
+				console.log(document.body.clientHeight);//1200
+			window.onscroll=function(){
+				console.log(document.body.scrollTop);
+				console.log(document.body);
+			}
+		</script>
+	</body>
+</html>
