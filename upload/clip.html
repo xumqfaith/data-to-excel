@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>   
+    <script type="text/JavaScript">      
+        window.onload=function(){
+                var image=new Image();
+                image.src='../img/00.png';   
+                image.onload=function(){
+                var canvas=document.createElement('canvas');
+                canvas.width=106;
+                canvas.height=100;
+                context=canvas.getContext('2d');
+                context.moveTo(0, 6);
+                context.lineTo(0, 100-6);
+                context.quadraticCurveTo(0, 100, 6, 100);
+                context.lineTo(100-6, 100);
+                context.quadraticCurveTo(100, 100, 100, 100-6);
+                context.lineTo(100,27);
+                context.lineTo(100+5,22);
+                context.lineTo(100,17);
+                context.lineTo(100, 6);
+                context.quadraticCurveTo(100, 0, 100-6, 0);
+                context.lineTo(6, 0);
+                context.quadraticCurveTo(0, 0, 0, 6);
+                context.lineWidth=0.5;
+                context.stroke();
+                context.clip();
+                context.drawImage(image,0,0,106,100);
+                document.body.appendChild(canvas);
+                }
+}
+    </script>
+</head>
+<body style="margin:0px;padding:0px;">
+</body>
+</html>
